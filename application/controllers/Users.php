@@ -6,6 +6,7 @@ class Users extends Admin_Controller{
 		parent::__construct();
 		$this->load->model('model_users');
 		}
+/* create admin users*/
 	public function adminusers()
 	{
 
