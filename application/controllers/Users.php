@@ -8,7 +8,7 @@ class Users extends Admin_Controller{
 		}
 	public function adminusers()
 	{
-		
+
 		$data['pageTitle'] = 'Zingmobile-VPN New Admin Users List';
 		$row=$this->model_users->adminuserList();
 		$data['rows']=$row;
@@ -16,7 +16,7 @@ class Users extends Admin_Controller{
 		$this->load->view('menu');
 		$this->load->view('adminusers');
 		$this->load->view('footer');
-		
+
 	}
 public function saveAdminUser()
 {
@@ -40,8 +40,8 @@ public function saveAdminUser()
 		}
 		print json_encode($result);
 	}
-	
-}	
+
+}
 	public function index()
 	{
 		//$this->output->enable_profiler(true);
@@ -60,7 +60,7 @@ public function saveAdminUser()
 	public function add($id=null)
 	{	if($this->input->post())
 		{
-			
+
 		$this->ccode    = $this->input->post('ccode'); // please read the below note
 		$this->username  = $this->input->post('username');
 		$this->password  = $this->input->post('password');
@@ -75,16 +75,16 @@ public function saveAdminUser()
 				redirect('/users');
 				exit;
 			}
-				
-			
-		}	
+
+
+		}
 		if($this->db->insert('clients', $this))
 		{
 			redirect('/users');
 			exit;
 		}
-			
-		
+
+
 		}
 		if($id)
 		{
@@ -92,7 +92,7 @@ public function saveAdminUser()
 			$data['row']=$row;
 			$company=$this->model_users->getCompanyList($row[0]['ccode']);
 		}
-		else		
+		else
 		$company=$this->model_users->getCompanyList();
 		$data['companyList']=$company;
 		$data['pageTitle'] = 'Zingmobile-VPN New User';
@@ -102,10 +102,11 @@ public function saveAdminUser()
 		$this->load->view('menu');
 		$this->load->view('user');
 		$this->load->view('footer');
-		
+
 	}
+	/* upload files */
 	public function upload()
-	{	
+	{
 		$data['error']='';
 		if($this->input->post())
 		{
@@ -118,7 +119,7 @@ public function saveAdminUser()
                         $data['error'] = $this->upload->display_errors();
 				 }
                 else
-                {
+								{
                         $fname=$this->upload->data('file_name');
 						$this->ccode=$this->input->post('ccode');
 						$this->cby=$this->data['profile']['id'];
@@ -129,12 +130,12 @@ public function saveAdminUser()
 						$this->username = $k[0];
 						$this->password = $k[1];
 						$this->db->insert("clients",$this);
-						}						
+						}
 						redirect('/users');
 						exit;
-                        
+
                 }
-			
+
 		}
 		$company=$this->model_users->getCompanyList();
 		$data['companyList']=$company;
@@ -145,7 +146,7 @@ public function saveAdminUser()
 		$this->load->view('menu');
 		$this->load->view('upload');
 		$this->load->view('footer');
-		
+
 	}
-		
+
 }
