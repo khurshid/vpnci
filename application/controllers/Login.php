@@ -28,16 +28,16 @@ class Login extends CI_Controller {
 	  $email=$this->input->post('email');
 	  if(!empty($email))
 	  {
-		  
+
 	  }
-		
+
 	}
+	/* Logout from the appplication */
 	public function logout()
 	{
 		$this->session->sess_destroy();
 		redirect('/login','location', 301);
-		
-		
+
+
 	}
 }
-
