@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 		$this->load->view('l_header',$data);
 		$this->load->view('login');
 		$this->load->view('l_footer');
-	}
+        	}
 	public function auth()
 	{
 		$this->load->model('model_login');
@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 	  $email=$this->input->post('email');
 	  if(!empty($email))
 	  {
-
+     return 1;
 	  }
 
 	}
