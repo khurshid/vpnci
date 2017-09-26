@@ -22,6 +22,7 @@ class Login extends CI_Controller
         $password=$this->input->post('password');
         $row=$this->model_login->auth($email, $password);
         $this->session->set_userdata('profile', $row);
+        $this->session->set_userdata('profile', $row);
         if ($row['id']) {
             redirect('/users', 'location', 301);
         } else {
